@@ -11,8 +11,8 @@ class UnalignedDataset(BaseDataset):
         self.opt = opt
         self.root = opt.dataroot
         ###TODO dataset dir has been modified
-        self.dir_A = os.path.join(opt.dataroot, opt.phase, 'night_mwir')
-        self.dir_B = os.path.join(opt.dataroot, opt.phase, 'day_visible')
+        self.dir_A = os.path.join(opt.dataroot, opt.phase, opt.A_name)
+        self.dir_B = os.path.join(opt.dataroot, opt.phase, opt.B_name)
 
 
         ####TODO: note this is for sensiac night object detection
@@ -36,8 +36,8 @@ class UnalignedDataset(BaseDataset):
         self.B_size = len(self.B_paths)
         self.transform = get_transform(opt)
 
-        self.dir_A_bboxes = os.path.join(opt.dataroot,'annotation',opt.phase,'night_mwir')
-        self.dir_B_bboxes = os.path.join(opt.dataroot,'annotation',opt.phase,'day_visible')
+        self.dir_A_bboxes = os.path.join(opt.dataroot,'annotation',opt.phase, opt.A_name)
+        self.dir_B_bboxes = os.path.join(opt.dataroot,'annotation',opt.phase, opt.B_name)
 
         self.A_bboxes_paths = make_dataset(self.dir_A_bboxes)
         self.B_bboxes_paths = make_dataset(self.dir_B_bboxes)
