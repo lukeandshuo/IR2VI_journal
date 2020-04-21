@@ -11,9 +11,9 @@ class BaseOptions():
 
     def initialize(self):
         self.parser.add_argument('--dataroot', default='./datasets/I2I_equ', help='path to images (should have subfolders trainA, trainB, valA, valB, etc)')
-        self.parser.add_argument('--A_name', default='night_ir', help='class A folder name')
+        self.parser.add_argument('--A_name', default='night_mwir', help='class A folder name')
         self.parser.add_argument('--B_name', default='day_visible', help='class B folder name')
-        self.parser.add_argument('--batchSize', type=int, default=1, help='input batch size')
+        self.parser.add_argument('--batchSize', type=int, default=2, help='input batch size')
         self.parser.add_argument('--loadSize', type=int, default=480, help='scale images to this size')
         self.parser.add_argument('--fineSize', type=int, default=256, help='then crop to this size')
         self.parser.add_argument('--objectSize', type=int, default=64, help='the object size for Discriminator')
@@ -35,7 +35,7 @@ class BaseOptions():
         self.parser.add_argument('--norm', type=str, default='batch', help='instance normalization or batch normalization')
         self.parser.add_argument('--serial_batches', type=bool, default=True, help='if true, takes images in order to make batches, otherwise takes them randomly')
         self.parser.add_argument('--display_winsize', type=int, default=256,  help='display window size')
-        self.parser.add_argument('--display_id', type=int, default=1, help='window id of the web display')
+        self.parser.add_argument('--display_id', type=int, default=0, help='window id of the web display')
         self.parser.add_argument('--display_port', type=int, default=8097, help='visdom port of the web display')
         self.parser.add_argument('--no_dropout', action='store_true', help='no dropout for the generator')
         self.parser.add_argument('--max_dataset_size', type=int, default=float("inf"), help='Maximum number of samples allowed per dataset. If the dataset directory contains more than max_dataset_size, only a subset is loaded.')

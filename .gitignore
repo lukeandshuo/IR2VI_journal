@@ -5,3 +5,4 @@ I2I_equ/
 __pycache__/
 .vscode/
 checkpoints/
+.DS_Stores
