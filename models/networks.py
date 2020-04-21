@@ -223,11 +223,11 @@ class ResnetGenerator(nn.Module):
         else:
             use_bias = norm_layer == nn.InstanceNorm2d
 
-        skip_connection = [nn.ReflectionPad2d(3),
-                          nn.Conv2d(input_nc, output_nc, kernel_size=7, padding=0, bias=use_bias),
-                          norm_layer(output_nc)]
+        # skip_connection = [nn.ReflectionPad2d(3),
+        #                   nn.Conv2d(input_nc, output_nc, kernel_size=7, padding=0, bias=use_bias),
+        #                   norm_layer(output_nc)]
 
-        self.skip_connection = nn.Sequential(*skip_connection)
+        # self.skip_connection = nn.Sequential(*skip_connection)
 
         model = [nn.ReflectionPad2d(3),
                  nn.Conv2d(input_nc, ngf, kernel_size=7, padding=0,
@@ -273,8 +273,9 @@ class ResnetGenerator(nn.Module):
 
        # plt.imshow(texture_img)
 
-        contour = self.skip_connection(input)
-        contour_img = util.tensor2im(self.tanh_modul(contour).data)
+        # contour = self.skip_connection(input)
+        # contour_img = util.tensor2im(self.tanh_modul(contour).data)
+
         # cv2.imwrite("/data/Sensiac/SensiacNight/I2I_OD_Night/Imagery/demo(out)/images/ir_texture.png",texture_img)
         # cv2.imwrite("/data/Sensiac/SensiacNight/I2I_OD_Night/Imagery/demo(out)/images/ir_contour.png", contour_img)
         # cv2.imshow("texture",texture_img)
@@ -283,7 +284,7 @@ class ResnetGenerator(nn.Module):
         # contour_img  = contour.cpu().data.numpy()[0,0,:,:]
      #   plt.imshow(hf_img)
       #  plt.show()
-        output = contour+texture
+        output = texture
         return self.tanh_modul(output)
 
 
