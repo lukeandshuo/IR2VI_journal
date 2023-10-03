@@ -1,6 +1,6 @@
 torch==0.4.1
 torchvision==0.2.1
-pillow==6.1.0
+pillow==10.0.1
 visdom
 dominate
 opencv-python
